@@ -18,8 +18,8 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
-/*        CustInfo custinfo = new CustInfo();
-        custinfo.WirteData();*/
+        CustInfo custinfo = new CustInfo();
+        custinfo.WirteData();
         RandomDateGenerator randomdategenerator=new RandomDateGenerator();
         System.out.println(randomdategenerator.generate10RandomDate());
         System.out.println(randomdategenerator.generate8RandomDate());
