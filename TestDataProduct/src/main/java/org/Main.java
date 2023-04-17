@@ -26,6 +26,5 @@ public class Main {
         RandomSerialNumberGenerator randomserialnumbergenerator =new RandomSerialNumberGenerator();
         System.out.println(randomserialnumbergenerator.generateRandomSerialNumber(23));
 
-
     }
 }
