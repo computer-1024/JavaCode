@@ -3,6 +3,7 @@ package com.citicbank;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Arrays;
 
 public class CSVReader {
 
@@ -18,11 +19,18 @@ public class CSVReader {
                     continue; // 跳过第一行
                 }
                 // 使用逗号分隔符解析CSV行
-                String[] data = line.split(",");
+                String[] data = line.split(",",-1);
 
-                Check_Base_Rule check_rule = new Check_Base_Rule();
-                check_rule.setArray_data(data);
-                System.out.println(check_rule.rst_print());
+                //检查基本的规则
+                Check_Base_Rule check_base_rule = new Check_Base_Rule();
+                check_base_rule.setArray_data(data);
+                System.out.println(check_base_rule.base_rst_print());
+
+                //检查流程性规则
+                Check_Process_Rule check_process_rule = new Check_Process_Rule();
+                check_process_rule.setArray_data(data);
+                System.out.println(check_process_rule.process_rst_print());
+
 
 
             }

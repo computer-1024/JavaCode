@@ -1,3 +1,4 @@
-序号,处理系统,标名(大写),模型类型,变更类型
-1,bhif,BHIF_T_NPCS_T_APLI_REL,T,新增实体
-2,bhif,BHIF_T_A,A,新增实体
+序号,处理系统,标名(大写),模型类型,变更类型,是否更新DDL,是否备份DDL,是否更新GSQL,是否备份GSQL,是否更新调度
+1,bhif,BHIF_T_NPCS_T_APLI_REL,T,新增实体,Y,N,Y,N,Y
+2,bhif,BHIF_T_A,T,新增实体,,,,,
+3,bhif,BHIF_T_B,V,新增1实体,Y,N,Y,N,Y
