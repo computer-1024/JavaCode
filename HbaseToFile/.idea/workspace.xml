@@ -5,14 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="216df8e9-2b73-489e-b22e-2ce93fcbc6e3" name="变更" comment="提交">
-      <change afterPath="$PROJECT_DIR$/../hbase/src/main/resources/hbase-site.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/src/main/java/com/citicbank/hbase/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/src/main/java/com/citicbank/hbase/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/target/classes/com/citicbank/hbase/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/classes/com/citicbank/hbase/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/target/hbase-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/hbase-1.0-jar-with-dependencies.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/target/hbase-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/hbase-1.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hbase/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +84,8 @@
       <workItem from="1681913084968" duration="290000" />
       <workItem from="1681917205381" duration="48000" />
       <workItem from="1690463009809" duration="6000" />
+      <workItem from="1690463020982" duration="173000" />
+      <workItem from="1690463197700" duration="12000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1681830884627</created>
@@ -106,7 +101,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681917244294</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="提交">
+      <created>1690463039228</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1690463039228</updated>
+    </task>
+    <task id="LOCAL-00004" summary="提交">
+      <created>1690463049865</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1690463049865</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
