@@ -6,7 +6,9 @@ import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.security.User;
 import org.apache.hadoop.hbase.util.Bytes;
+import org.apache.hadoop.security.UserGroupInformation;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -17,38 +19,38 @@ import java.util.Map;
 
 public class Main {
 
-    public static void outputfile(StringBuilder stringbuilder, String arg) throws IOException {
-
-        File file = new File(arg+".dat");
-        FileOutputStream fos = new FileOutputStream(file);
-        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
-        BufferedWriter bw = new BufferedWriter(osw);
-        bw.write(String.valueOf(stringbuilder));
-        bw.close();
-        osw.close();
-        fos.close();
-
-    }
-    public static void getdata(Table table,String key) throws IOException {
-
-        Get g = new Get(Bytes.toBytes(key));
-
-        // Reading the data
-        Result result = table.get(g);
-
-        // Reading values from Result class object
-        byte [] value = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("name"));
-        byte [] value1 = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("city"));
-        byte [] value2 = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("salary"));
-
-        // Printing the values
-        String name = Bytes.toString(value);
-        String city = Bytes.toString(value1);
-        String salary = Bytes.toString(value2);
-
-        System.out.println("name: " + name + " city: " + city+" salary: " + salary);
-
-    }
+//    public static void outputfile(StringBuilder stringbuilder, String arg) throws IOException {
+//
+//        File file = new File(arg+".dat");
+//        FileOutputStream fos = new FileOutputStream(file);
+//        OutputStreamWriter osw = new OutputStreamWriter(fos, StandardCharsets.UTF_8);
+//        BufferedWriter bw = new BufferedWriter(osw);
+//        bw.write(String.valueOf(stringbuilder));
+//        bw.close();
+//        osw.close();
+//        fos.close();
+//
+//    }
+//    public static void getdata(Table table,String key) throws IOException {
+//
+//        Get g = new Get(Bytes.toBytes(key));
+//
+//        // Reading the data
+//        Result result = table.get(g);
+//
+//        // Reading values from Result class object
+//        byte [] value = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("name"));
+//        byte [] value1 = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("city"));
+//        byte [] value2 = result.getValue(Bytes.toBytes("cf"),Bytes.toBytes("salary"));
+//
+//        // Printing the values
+//        String name = Bytes.toString(value);
+//        String city = Bytes.toString(value1);
+//        String salary = Bytes.toString(value2);
+//
+//        System.out.println("name: " + name + " city: " + city+" salary: " + salary);
+//
+//    }
 
     public static void scandata(Table table, String arg) throws IOException {
 
@@ -56,8 +58,12 @@ public class Main {
         String delimiter ="" + (char)0x03;
 
         Scan scan = new Scan();
-        ResultScanner scanner = table.getScanner(scan);
+        scan.addColumn("cf".getBytes(),"city".getBytes());
+        scan.addColumn("cf".getBytes(),"name".getBytes());
+        scan.addColumn("cf".getBytes(),"salary".getBytes());
 
+        ResultScanner scanner = table.getScanner(scan);
+        System.out.println("1");
         Map<String, List<String>> data = new HashMap<>();
 
         for (Result result = scanner.next(); result != null; result = scanner.next()) {
@@ -68,26 +74,28 @@ public class Main {
                 String value = Bytes.toString(CellUtil.cloneValue(cell));
                 values.add(value);
             }
-            data.put(rowkey, values);
+           // data.put(rowkey, values);
+            System.out.println("rowkey"+rowkey);
+            System.out.println("value"+values);
         }
-            StringBuilder stringbuilder = new StringBuilder();
-        for (Map.Entry<String, List<String>> entry : data.entrySet()) {
-            stringbuilder.append(entry.getKey());
-            for (String value : entry.getValue()) {
-                if( value == null){
-                    stringbuilder.append(delimiter);
-                }
-                else
-                {
-                    stringbuilder.append(delimiter);
-                    stringbuilder.append(value);
-                }
-
-            }
-            stringbuilder.append("\n");
-        }
+//            StringBuilder stringbuilder = new StringBuilder();
+//        for (Map.Entry<String, List<String>> entry : data.entrySet()) {
+//            stringbuilder.append(entry.getKey());
+//            for (String value : entry.getValue()) {
+//                if( value == null){
+//                    stringbuilder.append(delimiter);
+//                }
+//                else
+//                {
+//                    stringbuilder.append(delimiter);
+//                    stringbuilder.append(value);
+//                }
+//
+//            }
+//            stringbuilder.append("\n");
+//        }
         scanner.close();
-        outputfile(stringbuilder,arg);
+       // outputfile(stringbuilder,arg);
 
     }
 
@@ -97,15 +105,22 @@ public class Main {
         // Instantiating Configuration class
         Configuration config = HBaseConfiguration.create();
 
-        config.set("hbase.zookeeper.quorum", args[0]);
-        config.set("hbase.zookeeper.property.clientPort", args[1]);
+        UserGroupInformation usergroupinformation = UserGroupInformation.createRemoteUser("hadoop");
 
-        Connection connection = ConnectionFactory.createConnection(config);
 
-        Table table = connection.getTable(TableName.valueOf(args[2]));
+        config.set("hbase.zookeeper.quorum", "192.168.1.8");
+        config.set("hbase.zookeeper.property.clientPort", "2181");
+        System.out.println("2");
+
+        Connection connection = ConnectionFactory.createConnection(config,User.create(usergroupinformation));
+
+        System.out.println("1");
+
+        Table table = connection.getTable(TableName.valueOf("emp"));
 
        //getdata(table,"1");
-        scandata(table,args[2]);
+        //scandata(table,"emp");
+
 
     }
 }

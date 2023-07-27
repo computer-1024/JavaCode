@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="216df8e9-2b73-489e-b22e-2ce93fcbc6e3" name="变更" comment="提交" />
+    <list default="true" id="216df8e9-2b73-489e-b22e-2ce93fcbc6e3" name="变更" comment="提交">
+      <change afterPath="$PROJECT_DIR$/../hbase/src/main/resources/hbase-site.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/src/main/java/com/citicbank/hbase/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/src/main/java/com/citicbank/hbase/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/target/classes/com/citicbank/hbase/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/classes/com/citicbank/hbase/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/target/hbase-1.0-jar-with-dependencies.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/hbase-1.0-jar-with-dependencies.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/target/hbase-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/hbase-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hbase/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../hbase/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,22 +60,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Spring/HbaseToFile",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Spring/HbaseToFile&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">
@@ -81,6 +90,7 @@
       <workItem from="1681831158634" duration="19000" />
       <workItem from="1681913084968" duration="290000" />
       <workItem from="1681917205381" duration="48000" />
+      <workItem from="1690463009809" duration="6000" />
     </task>
     <task id="LOCAL-00001" summary="提交">
       <created>1681830884627</created>
