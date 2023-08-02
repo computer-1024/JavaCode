@@ -5,6 +5,7 @@ public class Check_Base_Rule {
     private String[] array_data;
 
     public Check_Base_Rule() {
+
     }
 
     public void setArray_data(String[] array_data) {

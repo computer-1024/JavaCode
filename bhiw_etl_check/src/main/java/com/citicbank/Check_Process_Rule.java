@@ -1,10 +1,16 @@
 package com.citicbank;
 
+import java.io.File;
+
 public class Check_Process_Rule {
 
-    private String[] array_data;
-
+    private  String[] array_data;
+    private String configPath;
     public Check_Process_Rule() {
+
+    }
+    public void setConfigPath(String configPath) {
+        this.configPath = configPath;
     }
 
     public void setArray_data(String[] array_data) {
@@ -21,8 +27,17 @@ public class Check_Process_Rule {
                 && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否备份DDL
                 && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新GSQL
                 && array_data[8].equalsIgnoreCase("N")  // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("Y"); // array_data[9] 是否更新调度
+                && array_data[9].equalsIgnoreCase("Y") // array_data[9] 是否更新调度
+                && judge_add_entity();
     }
+
+    public boolean judge_add_entity()
+    {
+        return new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".gsql").exists()
+                && new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".excel").exists();
+    }
+
 
     //检查修改实体的配置
     public boolean process_modify_entity()
@@ -34,9 +49,16 @@ public class Check_Process_Rule {
                 && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否备份DDL
                 && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新GSQL
                 && array_data[8].equalsIgnoreCase("N")  // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("Y"); // array_data[9] 是否更新调度
+                && array_data[9].equalsIgnoreCase("Y") // array_data[9] 是否更新调度
+                && judge_modify_entity();
     }
 
+    public boolean judge_modify_entity()
+    {
+        return new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".gsql").exists()
+                && new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".excel").exists();
+    }
 
     //检查新增视图的配置
     public boolean process_add_view()
@@ -48,8 +70,15 @@ public class Check_Process_Rule {
                 && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否备份DDL
                 && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新GSQL
                 && array_data[8].equalsIgnoreCase("N")  // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N"); // array_data[9] 是否更新调度
+                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否更新调度
+                && judge_add_view();
     }
+
+    public boolean judge_add_view()
+    {
+        return new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists();
+    }
+
 
     //检查修改视图的配置
     public boolean process_modify_view()
@@ -61,9 +90,14 @@ public class Check_Process_Rule {
                 && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否备份DDL
                 && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新GSQL
                 && array_data[8].equalsIgnoreCase("N")  // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N"); // array_data[9] 是否更新调度
+                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否更新调度
+                && judge_modify_view();
     }
 
+    public boolean judge_modify_view()
+    {
+        return new File(this.configPath+"\\Tablelist\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists();
+    }
 
 
     public boolean process_check() {
