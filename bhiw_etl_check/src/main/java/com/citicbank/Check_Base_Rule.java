@@ -16,11 +16,11 @@ public class Check_Base_Rule {
         return base_systype() && base_modeltype() &&base_entityname()&&base_changetype();
     }
 
-    public String base_rst_print() {
+/*    public String base_rst_print() {
 
         return array_data[2].toUpperCase() + (base_check()? ":检查基本配置通过":":检查基本配置不通过");
 
-    }
+    }*/
 
     //检查处理系统
     public  boolean base_systype() {
@@ -44,12 +44,13 @@ public class Check_Base_Rule {
     //检查变更类型
     public  boolean base_changetype() {
         return  array_data[4].equalsIgnoreCase("新增实体")
-                || array_data[4].equalsIgnoreCase("实体变更")
-                || array_data[4].equalsIgnoreCase("删除实体")
+                || array_data[4].equalsIgnoreCase("变更实体")
+  //              || array_data[4].equalsIgnoreCase("删除实体")
                 || array_data[4].equalsIgnoreCase("新增视图")
-                || array_data[4].equalsIgnoreCase("视图变更")
-                || array_data[4].equalsIgnoreCase("删除视图")
-                || array_data[4].equalsIgnoreCase("逻辑变更");
+                || array_data[4].equalsIgnoreCase("变更视图")
+//                || array_data[4].equalsIgnoreCase("删除视图")
+                || array_data[4].equalsIgnoreCase("变更逻辑")
+                || array_data[4].equalsIgnoreCase("变更依赖");
 
     }
 
