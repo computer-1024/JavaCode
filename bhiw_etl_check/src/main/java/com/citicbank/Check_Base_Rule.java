@@ -16,12 +16,6 @@ public class Check_Base_Rule {
         return base_systype() && base_modeltype() &&base_entityname()&&base_changetype();
     }
 
-/*    public String base_rst_print() {
-
-        return array_data[2].toUpperCase() + (base_check()? ":检查基本配置通过":":检查基本配置不通过");
-
-    }*/
-
     //检查处理系统
     public  boolean base_systype() {
         return array_data[1].equalsIgnoreCase("bhif");
