@@ -37,14 +37,19 @@ public class Check_Base_Rule {
 
     //检查变更类型
     public  boolean base_changetype() {
-        return  array_data[4].equalsIgnoreCase("新增实体")
-                || array_data[4].equalsIgnoreCase("变更实体")
-  //              || array_data[4].equalsIgnoreCase("删除实体")
-                || array_data[4].equalsIgnoreCase("新增视图")
-                || array_data[4].equalsIgnoreCase("变更视图")
-//                || array_data[4].equalsIgnoreCase("删除视图")
-                || array_data[4].equalsIgnoreCase("变更逻辑")
-                || array_data[4].equalsIgnoreCase("变更依赖");
+        return  array_data[4].equalsIgnoreCase("实体-DDL变更")  //1
+                || array_data[4].equalsIgnoreCase("实体-GSQL变更(备份GSQL)") //2
+                || array_data[4].equalsIgnoreCase("实体-XLS变更") //3
+                || array_data[4].equalsIgnoreCase("实体-DDL/XLS变更") //4
+                || array_data[4].equalsIgnoreCase("实体-DDL/GSQL变更(备份GSQL)") //5
+                || array_data[4].equalsIgnoreCase("实体-GSQL和XLS变更(备份GSQL)") //6
+                || array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL新增(新增存储策略)")  //7
+                || array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL变更(备份GSQL)") //8
+                || array_data[4].equalsIgnoreCase("视图-DDL变更") //9
+                || array_data[4].equalsIgnoreCase("视图-XLS变更") //10
+                || array_data[4].equalsIgnoreCase("视图-DDL/XLS变更") //11
+                || array_data[4].equalsIgnoreCase("实体-数据重跑") //12
+                || array_data[4].equalsIgnoreCase("视图-数据重跑"); //13
 
     }
 
