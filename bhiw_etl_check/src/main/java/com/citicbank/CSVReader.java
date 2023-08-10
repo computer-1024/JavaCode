@@ -56,13 +56,11 @@ public class CSVReader {
                         System.out.println(data[2].toUpperCase() + "流程化配置检查不通过");
                         break;
                     }
-
                 }
                 else
                 {
                     System.out.println(data[2].toUpperCase() + "检查基本配置不通过");
                     break;
-
                 }
 
             }

@@ -34,11 +34,16 @@ public class Check_Process_Rule {
 
     public boolean judge_add_entity()
     {
+
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==3;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==3
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql");
     }
 
     //实体-DDL/XLS/GSQL变更(备份GSQL)
@@ -59,10 +64,14 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity()
     {
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==3;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==3
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql");
     }
 
     //实体-DDL变更
@@ -84,8 +93,10 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_ddl()
     {
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
     }
 
     //实体-GSQL变更(备份GSQL)
@@ -107,8 +118,10 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_gsql()
     {
         /* 判断文件名称和类型以及数量 */
-        return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return  new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql");
     }
 
     //实体-XLS变更
@@ -129,8 +142,8 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_xls()
     {
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1;
     }
 
     //实体-DDL/XLS变更
@@ -151,9 +164,11 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_ddl_xls()
     {
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==2;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==2
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
     }
 
     //实体-DDL/GSQL变更(备份GSQL)
@@ -174,9 +189,13 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_ddl_gsql()
     {
         /* 判断文件名称和类型以及数量 */
-        return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==2;
+        return new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==2
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql");
     }
 
     //实体-GSQL和XLS变更(备份GSQL)
@@ -197,9 +216,11 @@ public class Check_Process_Rule {
     public boolean judge_modify_entity_gsql_xls()
     {
         /* 判断文件名称和类型以及数量 */
-        return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==2;
+        return  new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==2
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql");
     }
 
 
@@ -221,8 +242,10 @@ public class Check_Process_Rule {
     public boolean judge_modify_view_ddl()
     {
         /* 判断文件名称和类型以及数量 */
-        return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return  new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
     }
 
     //视图-XLS变更
@@ -243,8 +266,8 @@ public class Check_Process_Rule {
     public boolean judge_modify_view_xls()
     {
         /* 判断文件名称和类型以及数量 */
-        return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return  new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1;
     }
 
     //视图-DDL/XLS变更
@@ -265,9 +288,11 @@ public class Check_Process_Rule {
     public boolean judge_modify_view_ddl_xls()
     {
         /* 判断文件名称和类型以及数量 */
-        return   new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
-                && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1;
+        return   new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
+                && new File(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\DB\\TableList\\"+array_data[2])==1
+                && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\DB\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
     }
 
     //实体-数据重跑
