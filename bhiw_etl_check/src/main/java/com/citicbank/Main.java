@@ -5,8 +5,8 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        String csvFile = "D:\\document\\SCRIPT_LIST.csv";
-
+     //   String csvFile = args[0];
+        String csvFile="D:\\document\\DB\\SCRIPT_LIST.csv";
         //检查文件是否存在
 
         if(CommonFunction.isFileExists(csvFile))

@@ -30,7 +30,7 @@
                         <configuration>
                             <archive>
                                 <manifest>
-                                    <mainClass>com.example.MainClass</mainClass>
+                                    <mainClass>com.citicbank.Main</mainClass>
                                 </manifest>
                             </archive>
                             <descriptorRefs>
