@@ -1,6 +1,7 @@
 package com.citicbank;
 
 import java.io.File;
+import java.io.IOException;
 
 public class Check_Process_Rule {
 
@@ -296,8 +297,7 @@ public class Check_Process_Rule {
     }
 
     //实体-数据重跑
-    public boolean process_modify_entity_rerunning()
-    {
+    public boolean process_modify_entity_rerunning() throws IOException {
         return  array_data[2].substring(0,6).equalsIgnoreCase("bhif_t") //匹配视图名称
                 && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("实体-数据重跑")    // array_data[4] 变更类型
@@ -310,16 +310,16 @@ public class Check_Process_Rule {
                 && judge_modify_entity_rerunning();
     }
 
-    public boolean judge_modify_entity_rerunning()
-    {
-        /* 判断文件名称和类型以及数量 */
-        return  true;
+    public boolean judge_modify_entity_rerunning() throws IOException {
+        /* 判断是否在running-job.conf文件清单里*/
+        return CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\running-job.conf")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\running-job.conf")
+                && CommonFunction.hasRunningConf(this.configPath+"\\running-job.conf",array_data[2].toUpperCase());
     }
 
     //视图-数据重跑
 
-    public boolean process_modify_view_rerunning()
-    {
+    public boolean process_modify_view_rerunning() throws IOException {
         return  array_data[2].substring(0,6).equalsIgnoreCase("bhif_v") //匹配视图名称
                 && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("视图-数据重跑")    // array_data[4] 变更类型
@@ -332,13 +332,14 @@ public class Check_Process_Rule {
                 && judge_modify_view_rerunning();
     }
 
-    public boolean judge_modify_view_rerunning()
-    {
-        /* 判断文件名称和类型以及数量 */
-        return  true;
+    public boolean judge_modify_view_rerunning() throws IOException {
+        /* 判断是否在running-job.conf文件清单里*/
+        return  CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\running-job.conf")
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\running-job.conf")
+                && CommonFunction.hasRunningConf(this.configPath+"\\running-job.conf",array_data[2].toUpperCase());
     }
 
-    public boolean process_check() {
+    public boolean process_check() throws IOException {
 
         return process_add_entity()
                 ||process_modify_entity()

@@ -3,6 +3,7 @@ package com.citicbank;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class CommonFunction {
 
@@ -102,6 +103,27 @@ public class CommonFunction {
             e.printStackTrace();
             return false;
         }
+    }
+
+
+    /* 判断是否在running-job.conf文件清单里*/
+    public static boolean hasRunningConf(String fileName,String objName) throws IOException {
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8));
+        String line;
+        while ((line = br.readLine()) != null) {
+
+            if (objName.substring(0,6).equalsIgnoreCase("bhif_t")
+                    && line.split("\\|",-1)[0].equalsIgnoreCase("EDW-BHIF-T_"+objName))
+                {
+                    return  true;
+                }
+
+
+        }
+        System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查");
+
+        return false;
     }
 
 }
