@@ -4,11 +4,9 @@ public class Check_Base_Rule {
 
     private String[] array_data;
 
-
     public Check_Base_Rule() {
 
     }
-
 
     public void setArray_data(String[] array_data) {
         this.array_data = array_data;
@@ -32,11 +30,9 @@ public class Check_Base_Rule {
     //检查表名/视图名称是否符合规范
     public  boolean base_entityname() {
 
-        return array_data[2].substring(0,6).equalsIgnoreCase("bhif_t")
-                ||array_data[2].substring(0,6).equalsIgnoreCase("bhif_v");
+        return array_data[2].substring(0,5).equalsIgnoreCase("bhif_");
 
     }
-
 
     //检查变更类型
     public  boolean base_changetype() {

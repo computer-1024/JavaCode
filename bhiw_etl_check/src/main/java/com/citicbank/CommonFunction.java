@@ -107,18 +107,25 @@ public class CommonFunction {
 
 
     /* 判断是否在running-job.conf文件清单里*/
-    public static boolean hasRunningConf(String fileName,String objName) throws IOException {
+    public static boolean hasRunningConf(String fileName,String objName,String rerunningType) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8));
         String line;
         while ((line = br.readLine()) != null) {
 
-            if (objName.substring(0,6).equalsIgnoreCase("bhif_t")
+            if ( rerunningType.equalsIgnoreCase("T")
+                    && objName.substring(0,5).equalsIgnoreCase("bhif_")
                     && line.split("\\|",-1)[0].equalsIgnoreCase("EDW-BHIF-T_"+objName))
-                {
-                    return  true;
-                }
+            {
+                return  true;
+            }
 
+            if ( rerunningType.equalsIgnoreCase("V")
+                    && objName.substring(0,5).equalsIgnoreCase("bhif_")
+                    && line.split("\\|",-1)[0].equalsIgnoreCase("EDW-BHIF-"+objName+"-EXP"))
+            {
+                return  true;
+            }
 
         }
         System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查");
