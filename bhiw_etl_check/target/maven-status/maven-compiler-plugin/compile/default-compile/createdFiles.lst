@@ -1,3 +1,4 @@
+com\citicbank\Check_gsql_rule.class
 com\citicbank\CSVReader.class
 com\citicbank\Check_Process_Rule.class
 com\citicbank\CommonFunction.class
