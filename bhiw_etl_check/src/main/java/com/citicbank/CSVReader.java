@@ -50,6 +50,10 @@ public class CSVReader {
                     {
                         System.out.println(data[2].toUpperCase() + "流程化配置检查通过");
 
+                        //检查Gsql脚本基本规范
+
+
+
                     }
                     else
                     {

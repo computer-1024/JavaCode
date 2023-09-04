@@ -276,7 +276,7 @@ public class Check_Process_Rule {
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
                 && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("视图-XLS变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("视图-DDL/XLS变更")    // array_data[4] 变更类型
                 && array_data[5].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
                 && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
                 && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
@@ -291,9 +291,9 @@ public class Check_Process_Rule {
         /* 判断文件名称和类型以及数量 */
         return   new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
                 && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
-                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1
+                && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==2
                 && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
-                && CommonFunction.hasUnixNewlines(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls");
     }
 
     //实体-数据重跑
