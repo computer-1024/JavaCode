@@ -1,7 +1,6 @@
 package com.citicbank;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Check_Process_Rule {
 
@@ -19,8 +18,7 @@ public class Check_Process_Rule {
     }
 
     //实体-DDL/XLS/GSQL新增(新增存储策略)
-    public boolean process_add_entity()
-    {
+    public boolean process_add_entity()  {
         return  array_data[2].substring(0,7).equalsIgnoreCase("bhif_t_") //匹配实体表名
                 && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL新增(新增存储策略)")   // array_data[4] 变更类型
@@ -33,8 +31,7 @@ public class Check_Process_Rule {
                 && judge_add_entity();
     }
 
-    public boolean judge_add_entity()
-    {
+    public boolean judge_add_entity()  {
 
         /* 判断文件名称和类型以及数量 */
         return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
@@ -48,8 +45,7 @@ public class Check_Process_Rule {
     }
 
     //实体-DDL/XLS/GSQL变更(备份GSQL)
-    public boolean process_modify_entity()
-    {
+    public boolean process_modify_entity()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
                 && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL变更(备份GSQL)")   // array_data[4] 变更类型
@@ -62,8 +58,7 @@ public class Check_Process_Rule {
                 && judge_modify_entity();
     }
 
-    public boolean judge_modify_entity()
-    {
+    public boolean judge_modify_entity()  {
         /* 判断文件名称和类型以及数量 */
         return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
                 && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
@@ -76,8 +71,7 @@ public class Check_Process_Rule {
     }
 
     //实体-DDL变更
-    public boolean process_modify_entity_ddl()
-    {
+    public boolean process_modify_entity_ddl()  {
 
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
                 && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
@@ -91,8 +85,7 @@ public class Check_Process_Rule {
                 && judge_modify_entity_ddl();
     }
 
-    public boolean judge_modify_entity_ddl()
-    {
+    public boolean judge_modify_entity_ddl()  {
         /* 判断文件名称和类型以及数量 */
         return new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl").exists()
                 && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1
@@ -101,8 +94,7 @@ public class Check_Process_Rule {
     }
 
     //实体-GSQL变更(备份GSQL)
-    public boolean process_modify_entity_gsql()
-    {
+    public boolean process_modify_entity_gsql()  {
 
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
                 && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
@@ -116,8 +108,7 @@ public class Check_Process_Rule {
                 && judge_modify_entity_gsql();
     }
 
-    public boolean judge_modify_entity_gsql()
-    {
+    public boolean judge_modify_entity_gsql()  {
         /* 判断文件名称和类型以及数量 */
         return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\EDW-BHIF-T_"+array_data[2]+".gsql").exists()
                 && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==1
@@ -293,11 +284,11 @@ public class Check_Process_Rule {
                 && new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
                 && CommonFunction.countFilesInDirectory(this.configPath+"\\TableList\\"+array_data[2])==2
                 && CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl")
-                && CommonFunction.hasUnixNewlines(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls");
+                && CommonFunction.hasUnixNewlines(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".ddl");
     }
 
     //实体-数据重跑
-    public boolean process_modify_entity_rerunning() throws IOException {
+    public boolean process_modify_entity_rerunning()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
                 && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("实体-数据重跑")    // array_data[4] 变更类型
@@ -310,7 +301,7 @@ public class Check_Process_Rule {
                 && judge_modify_entity_rerunning();
     }
 
-    public boolean judge_modify_entity_rerunning() throws IOException {
+    public boolean judge_modify_entity_rerunning()  {
         /* 判断是否在running-job.conf文件清单里*/
         return CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\running-job.conf")
                 && CommonFunction.hasUnixNewlines(this.configPath+"\\running-job.conf")
@@ -318,7 +309,7 @@ public class Check_Process_Rule {
     }
 
     //视图-数据重跑
-    public boolean process_modify_view_rerunning() throws IOException {
+    public boolean process_modify_view_rerunning()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
                 && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
                 && array_data[4].equalsIgnoreCase("视图-数据重跑")    // array_data[4] 变更类型
@@ -331,14 +322,14 @@ public class Check_Process_Rule {
                 && judge_modify_view_rerunning();
     }
 
-    public boolean judge_modify_view_rerunning() throws IOException {
+    public boolean judge_modify_view_rerunning() {
         /* 判断是否在running-job.conf文件清单里*/
         return  CommonFunction.isUTF8WithoutBOMCodeFile(this.configPath+"\\running-job.conf")
                 && CommonFunction.hasUnixNewlines(this.configPath+"\\running-job.conf")
                 && CommonFunction.hasRunningConf(this.configPath+"\\running-job.conf",array_data[2].toUpperCase(),array_data[3].toUpperCase());
     }
 
-    public boolean process_check() throws IOException {
+    public boolean process_check()  {
 
         return process_add_entity()
                 ||process_modify_entity()

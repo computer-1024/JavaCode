@@ -5,11 +5,14 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import org.apache.commons.io.FileUtils;
+import org.mozilla.universalchardet.UniversalDetector;
+
 public class CommonFunction {
 
 
     //检查文件是否存在
-    public static  boolean isFileExists(String csvFile) {
+    public static boolean isFileExists(String csvFile) {
         File file = new File(csvFile);
         return file.exists();
     }
@@ -34,45 +37,38 @@ public class CommonFunction {
     }
 
     //检查对应文件是否是UTF-8格式
-    public static boolean isUTF8WithoutBOMCodeFile(String filename) {
+    public static boolean isUTF8WithoutBOMCodeFile(String filename)  {
 
         File file = new File(filename);
-        try (BufferedInputStream inputStream = new BufferedInputStream(Files.newInputStream(file.toPath()))) {
-            // Check for UTF-8 BOM (Byte Order Mark)
-            byte[] bom = new byte[3];
-            if (inputStream.markSupported()) {
-                inputStream.mark(3);
-                if (inputStream.read(bom) == 3 && bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {
-                    System.out.println("代码脚本不是UTF-8格式");
-                    return false; // File has UTF-8 BOM
-                }
-                inputStream.reset();
-            }
 
-            // Read and decode the content to check for valid UTF-8
-            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!isValidUTF8String(line)) {
-                    System.out.println("代码脚本不是UTF-8格式");
-                    return false;
+            try(BufferedInputStream inputStream = new BufferedInputStream(Files.newInputStream(file.toPath()))) {
+                // Check for UTF-8 BOM (Byte Order Mark)
+                byte[] bom = new byte[3];
+                if (inputStream.markSupported()) {
+                    inputStream.mark(3);
+                    if (inputStream.read(bom) == 3 && bom[0] == (byte) 0xEF && bom[1] == (byte) 0xBB && bom[2] == (byte) 0xBF) {
+                        System.out.print(file.getName()+"的字符集为:"+"UTF-8-BOM.");
+                        return false; // File has UTF-8 BOM
+                    }
                 }
             }
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+            catch (Exception e) {
+                return false;
+            }
+
+
+            try{
+                byte[] bytes = FileUtils.readFileToByteArray(file);
+                UniversalDetector detector = new UniversalDetector(null);
+                detector.handleData(bytes, 0, bytes.length);
+                detector.dataEnd();
+                System.out.print(file.getName()+"的字符集为:"+detector.getDetectedCharset()+".");
+                return "UTF-8".equalsIgnoreCase(detector.getDetectedCharset()) ||(file.getName().equals("running-job.conf") && "US-ASCII".equalsIgnoreCase(detector.getDetectedCharset())) ;
+            }catch (Exception e) {
+                return false;
+            }
     }
 
-    static boolean isValidUTF8String(String str) {
-        try {
-            new String(str.getBytes(StandardCharsets.UTF_8), StandardCharsets.UTF_8);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
 
     //检查代码文件的换行符是否是UNIX(LF)而不是WINDOWS(CR LF)
     public static boolean hasUnixNewlines(String fileName) {
@@ -91,13 +87,14 @@ public class CommonFunction {
 
                     if (String.valueOf((char) nextcharacter).equals("\n"))
                     {
-                        System.out.println("代码脚本存在Windows CRLF换行符");
+                        System.out.print(file.getName()+"代码脚本是Windows CRLF换行符.");
                         return false;
                     }
 
                 }
 
             }
+            System.out.print(file.getName()+"代码脚本存是Unix LF换行符.");
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -107,30 +104,33 @@ public class CommonFunction {
 
 
     /* 判断是否在running-job.conf文件清单里*/
-    public static boolean hasRunningConf(String fileName,String objName,String rerunningType) throws IOException {
+    public static boolean hasRunningConf(String fileName,String objName,String rerunningType)  {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8));
-        String line;
-        while ((line = br.readLine()) != null) {
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(fileName)), StandardCharsets.UTF_8));
+            String line;
+            while ((line = br.readLine()) != null) {
 
-            if ( rerunningType.equalsIgnoreCase("T")
-                    && objName.substring(0,5).equalsIgnoreCase("bhif_")
-                    && line.split("\\|",-1)[0].equalsIgnoreCase("EDW-BHIF-T_"+objName))
-            {
-                return  true;
+                if (rerunningType.equalsIgnoreCase("T")
+                        && objName.substring(0, 5).equalsIgnoreCase("bhif_")
+                        && line.split("\\|", -1)[0].equalsIgnoreCase("EDW-BHIF-T_" + objName)) {
+                    return true;
+                }
+
+                if (rerunningType.equalsIgnoreCase("V")
+                        && objName.substring(0, 5).equalsIgnoreCase("bhif_")
+                        && line.split("\\|", -1)[0].equalsIgnoreCase("EDW-BHIF-" + objName + "-EXP")) {
+                    return true;
+                }
+
             }
-
-            if ( rerunningType.equalsIgnoreCase("V")
-                    && objName.substring(0,5).equalsIgnoreCase("bhif_")
-                    && line.split("\\|",-1)[0].equalsIgnoreCase("EDW-BHIF-"+objName+"-EXP"))
-            {
-                return  true;
-            }
-
+            System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查");
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
-        System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查");
 
-        return false;
     }
 
 }

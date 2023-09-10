@@ -39,7 +39,7 @@ public class CSVReader {
 
                 if( check_base_rule.base_check() )
                 {
-                    System.out.println(data[2].toUpperCase() + "检查基本配置通过");
+                    System.out.print(data[2].toUpperCase() + ":检查基本配置通过.");
 
                     //检查流程性规则
                     Check_Process_Rule check_process_rule = new Check_Process_Rule();
@@ -48,7 +48,7 @@ public class CSVReader {
 
                     if(check_process_rule.process_check())
                     {
-                        System.out.println(data[2].toUpperCase() + "流程化配置检查通过");
+                        System.out.println(data[2].toUpperCase() + ":流程化配置检查通过.");
 
                         //检查Gsql脚本基本规范
 
@@ -57,13 +57,13 @@ public class CSVReader {
                     }
                     else
                     {
-                        System.out.println(data[2].toUpperCase() + "流程化配置检查不通过");
+                        System.out.println(data[2].toUpperCase() + ":流程化配置检查不通过");
                         //break;
                     }
                 }
                 else
                 {
-                    System.out.println(data[2].toUpperCase() + "检查基本配置不通过");
+                    System.out.print(data[2].toUpperCase() + ":检查基本配置不通过");
                     //break;
                 }
 
