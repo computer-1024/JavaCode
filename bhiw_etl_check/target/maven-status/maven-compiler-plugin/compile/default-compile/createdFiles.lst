@@ -1,6 +1,7 @@
-com\citicbank\Check_gsql_rule.class
-com\citicbank\CSVReader.class
+com\citicbank\Check_ddl_rule.class
 com\citicbank\Check_Process_Rule.class
 com\citicbank\CommonFunction.class
 com\citicbank\Main.class
 com\citicbank\Check_Base_Rule.class
+com\citicbank\Check_gsql_rule.class
+com\citicbank\CSVReader.class
