@@ -1,4 +1,0 @@
-<property>
-    <name>hbase.zookeeper.quorum</name>
-    <value>cluster</value>
-</property>

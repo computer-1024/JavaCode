@@ -20,14 +20,14 @@ public class Check_Process_Rule {
     //实体-DDL/XLS/GSQL新增(新增存储策略)
     public boolean process_add_entity()  {
         return  array_data[2].substring(0,7).equalsIgnoreCase("bhif_t_") //匹配实体表名
-                && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL新增(新增存储策略)")   // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("Y") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T") // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-DDL/XLS/GSQL新增(新增存储策略)")   // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("Y") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_add_entity();
     }
 
@@ -47,14 +47,14 @@ public class Check_Process_Rule {
     //实体-DDL/XLS/GSQL变更(备份GSQL)
     public boolean process_modify_entity()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
-                && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-DDL/XLS/GSQL变更(备份GSQL)")   // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T") // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-DDL/XLS/GSQL变更(备份GSQL)")   // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity();
     }
 
@@ -74,14 +74,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_ddl()  {
 
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
-                && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-DDL变更")   // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T") // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-DDL变更")   // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")  // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_ddl();
     }
 
@@ -97,14 +97,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_gsql()  {
 
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配实体表名
-                && array_data[3].equalsIgnoreCase("T") // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-GSQL变更(备份GSQL)")   // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")  // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T") // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-GSQL变更(备份GSQL)")   // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")  // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_gsql();
     }
 
@@ -120,14 +120,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_xls()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-XLS变更")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-XLS变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_xls();
     }
 
@@ -142,14 +142,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_ddl_xls()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-DDL/XLS变更")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-DDL/XLS变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_ddl_xls();
     }
 
@@ -167,14 +167,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_ddl_gsql()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-DDL/GSQL变更(备份GSQL)")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-DDL/GSQL变更(备份GSQL)")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_ddl_gsql();
     }
 
@@ -194,14 +194,14 @@ public class Check_Process_Rule {
     public boolean process_modify_entity_gsql_xls()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-GSQL和XLS变更(备份GSQL)")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-GSQL和XLS变更(备份GSQL)")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("Y")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("Y") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_gsql_xls();
     }
 
@@ -220,14 +220,14 @@ public class Check_Process_Rule {
     public boolean process_modify_view_ddl()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("视图-DDL变更")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("V")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("视图-DDL变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_view_ddl();
     }
 
@@ -244,14 +244,14 @@ public class Check_Process_Rule {
     public boolean process_modify_view_xls()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("视图-XLS变更")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("V")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("视图-XLS变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_view_xls();
     }
 
@@ -266,14 +266,14 @@ public class Check_Process_Rule {
     public boolean process_modify_view_ddl_xls()
     {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("视图-DDL/XLS变更")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("V")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("视图-DDL/XLS变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("Y")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("Y")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
                 && judge_modify_view_ddl_xls();
     }
 
@@ -290,14 +290,14 @@ public class Check_Process_Rule {
     //实体-数据重跑
     public boolean process_modify_entity_rerunning()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("T")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("实体-数据重跑")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("Y") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-数据重跑")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("Y") // array_data[10] 是否涉及重跑
                 && judge_modify_entity_rerunning();
     }
 
@@ -311,14 +311,14 @@ public class Check_Process_Rule {
     //视图-数据重跑
     public boolean process_modify_view_rerunning()  {
         return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
-                && array_data[3].equalsIgnoreCase("V")  // array_data[3] 模型类型
-                && array_data[4].equalsIgnoreCase("视图-数据重跑")    // array_data[4] 变更类型
-                && array_data[5].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
-                && array_data[6].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
-                && array_data[7].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
-                && array_data[8].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
-                && array_data[9].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
-                && array_data[10].equalsIgnoreCase("Y") // array_data[10] 是否涉及重跑
+                && array_data[11].equalsIgnoreCase("V")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("视图-数据重跑")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("Y") // array_data[10] 是否涉及重跑
                 && judge_modify_view_rerunning();
     }
 
