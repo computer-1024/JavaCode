@@ -48,8 +48,9 @@ public class Check_Base_Rule {
                 || array_data[24].equalsIgnoreCase("视图-XLS变更") //10
                 || array_data[24].equalsIgnoreCase("视图-DDL/XLS变更") //11
                 || array_data[24].equalsIgnoreCase("实体-数据重跑") //12
-                || array_data[24].equalsIgnoreCase("视图-数据重跑"); //13
-
+                || array_data[24].equalsIgnoreCase("视图-数据重跑") //13
+                || array_data[24].equalsIgnoreCase("实体-卸数字符集变更") //14
+                || array_data[24].equalsIgnoreCase("视图-卸数字符集变更"); //15
     }
 
 

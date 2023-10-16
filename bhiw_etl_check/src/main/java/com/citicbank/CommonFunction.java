@@ -4,9 +4,12 @@ import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.regex.Pattern;
 
 import org.apache.commons.io.FileUtils;
 import org.mozilla.universalchardet.UniversalDetector;
+
+import javax.smartcardio.CommandAPDU;
 
 public class CommonFunction {
 
@@ -124,7 +127,7 @@ public class CommonFunction {
                 }
 
             }
-            System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查");
+            System.out.println("重跑表/视图作业未配置running-job.conf配置文件，请检查.");
             return false;
         } catch (IOException e) {
             e.printStackTrace();
@@ -132,5 +135,31 @@ public class CommonFunction {
         }
 
     }
+
+
+    /* 判断 通过使用正则表达式查看在某文件是否存在某字符串 */
+    public static boolean hasContainString(String ScriptFileName,String StringName ){
+
+        String regex="^(sh){1}\\s{1,}(\\$ETLPLUS_HOME/script/autoImport/jobExportOper.sh){1}\\s{1,}(TableList/"+StringName+"/"+StringName+".xls){1}\\s{1,}(0){1}\\s{1,}(NEDW){1}\\s{1,}.*";
+
+        try {
+            BufferedReader br = new BufferedReader(new InputStreamReader(Files.newInputStream(Paths.get(ScriptFileName)), StandardCharsets.UTF_8));
+            String line;
+            while ((line = br.readLine()) != null) {
+               if (Pattern.matches(regex, line))
+               {
+                   return true;
+               }
+
+            }
+            System.out.print("实体表/视图表未配置修改字符集的命令,请检查.");
+            return false;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
 
 }

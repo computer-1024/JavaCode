@@ -329,6 +329,43 @@ public class Check_Process_Rule {
                 && CommonFunction.hasRunningConf(this.configPath+"\\running-job.conf",array_data[2].toUpperCase(),array_data[3].toUpperCase());
     }
 
+    //实体-卸数字符集变更
+    public boolean process_modify_entity_characterset()  {
+        return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
+                && array_data[11].equalsIgnoreCase("T")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("实体-卸数字符集变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && judge_modify_entity_view_characterset();
+    }
+
+    //视图-卸数字符集变更
+
+    public boolean process_modify_view_characterset()  {
+        return  array_data[2].substring(0,5).equalsIgnoreCase("bhif_") //匹配视图名称
+                && array_data[11].equalsIgnoreCase("V")  // array_data[3] 模型类型
+                && array_data[24].equalsIgnoreCase("视图-卸数字符集变更")    // array_data[4] 变更类型
+                && array_data[4].equalsIgnoreCase("N")   // array_data[5] 是否更新DDL
+                && array_data[5].equalsIgnoreCase("N")  // array_data[6] 是否更新GSQL
+                && array_data[6].equalsIgnoreCase("N")  // array_data[7] 是否更新调度
+                && array_data[3].equalsIgnoreCase("N") // array_data[8] 是否备份GSQL
+                && array_data[7].equalsIgnoreCase("N") // array_data[9] 是否涉及清数配置
+                && array_data[8].equalsIgnoreCase("N") // array_data[10] 是否涉及重跑
+                && judge_modify_entity_view_characterset();
+    }
+
+    public boolean judge_modify_entity_view_characterset() {
+        /* 判断是否在yilaicbnk.sh脚本里是否包含修改字符集命令的调用*/
+        return  new File(this.configPath+"\\TableList\\"+array_data[2]+"\\"+array_data[2]+".xls").exists()
+                && CommonFunction.hasContainString(this.configPath+"\\yilaicbnk.sh",array_data[2]);
+
+    }
+
+
     public boolean process_check()  {
 
         return process_add_entity()
@@ -343,7 +380,9 @@ public class Check_Process_Rule {
                 ||process_modify_view_xls()
                 ||process_modify_view_ddl_xls()
                 ||process_modify_entity_rerunning()
-                ||process_modify_view_rerunning();
+                ||process_modify_view_rerunning()
+                ||process_modify_entity_characterset()
+                ||process_modify_view_characterset();
 
     }
 
